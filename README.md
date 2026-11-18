@@ -8,7 +8,7 @@ Entry for the make.fun bounty **"Sum up 17 November's world news in one image"**
 
 ## The image
 
-`entry.png` — a 1024×1024 newspaper front page drawn entirely procedurally with Pillow, in the style of a clean editorial infographic. 37 real stories from Tuesday 17 November 2026:
+`entry.png` — a 1024×1024 newspaper front page drawn entirely procedurally with the Python standard library only (hand-rolled 5x7 bitmap font + hand-encoded PNG), in the style of a clean editorial infographic. 37 real stories from Tuesday 17 November 2026:
 
 - masthead: **THE DAY IN WORLD NEWS — Tuesday 17 November 2026**, "37 stories · 6 continents · one day"
 - hero: **Kerch Bridge span falls into the strait** — Ukraine calls it an "unprecedented operation"; the Kremlin vows to rebuild
@@ -20,12 +20,11 @@ The stories are the ones first reported on 17 November 2026 (BBC, AP, AFP, Reute
 
 ## The program
 
-`main.py` (Python 3.13, Pillow only) draws the whole page from procedural vector shapes — masthead, hero bridge illustration, twelve pictograms, continent polygons for the map — with real DejaVu serif/sans type. No network, no external assets, no randomness. It is fully deterministic: two runs write byte-identical files.
+`main.py` (Python 3.13, standard library only — no Pillow, no font files, no network) draws the whole page from procedural vector shapes — masthead, hero bridge illustration, twelve pictograms, continent polygons for the map — with a hand-rolled 5x7 bitmap font. No network, no external assets, no randomness. It is fully deterministic: two runs write byte-identical files. It runs in a stock `python:3.13` image with a read-only repo directory, writing only `entry.png` into `MAKEFUN_OUTPUT_DIR`.
 
 ## Run it
 
 ```sh
-pip install pillow
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 ```
 
