@@ -8,19 +8,19 @@ Entry for the make.fun bounty **"Sum up 17 November's world news in one image"**
 
 ## The image
 
-`entry.png` — a 1024×1024 newspaper front page drawn entirely procedurally with the Python standard library only (hand-rolled 5x7 bitmap font + hand-encoded PNG), in the style of a clean editorial infographic. 37 real stories from Tuesday 17 November 2026:
+`entry.png` — a 1024×1024 newspaper front page rendered offline with Pillow and DejaVu fonts, in the style of a clean editorial infographic. 43 real stories from Tuesday 17 November 2026:
 
-- masthead: **THE DAY IN WORLD NEWS — Tuesday 17 November 2026**, "37 stories · 6 continents · one day"
-- hero: **Kerch Bridge span falls into the strait** — Ukraine calls it an "unprecedented operation"; the Kremlin vows to rebuild
-- **12 illustrated panels** (4×3 grid), one story each with a dateline kicker, bold serif headline and a drawn pictogram: tankers ablaze in the Strait of Hormuz, Trump in Manila then Xi and Putin, Iran's drones at the US radar base in Bahrain, Japan scrambling jets, five EU states planning a Rwanda return hub, the JPMorgan bug cutting off Zelle, Nvidia's earnings after the bell, the Vulcan rocket failure, Estonia shutting its Russia border crossings, the US losing measles-free status, the Houthi advance in Yemen, and the West urging Israel to open Gaza crossings
-- **WHERE IT HAPPENED**: a world map with numbered pins for the 13 lead stories, beside **ALSO ON TUESDAY 17 NOVEMBER** — 24 more stories, from the House Democrats' agenda to the Broncos-Raiders line
+- masthead: **Tuesday 17 November 2026**, "43 stories · 6 continents · all from Tuesday"
+- three hero stories with map-diagram illustrations: the **Crimean Bridge road span** falling into the strait, **Iran's drones at the US radar base in Bahrain** and the US strikes on Qeshm, and **Trump's first Quad summit in Manila** with critical-minerals deals
+- **10 illustrated panels** (5×2 grid), one story each with a dateline kicker, a bold serif headline and a drawn pictogram with a label strip: tankers ablaze in the Strait of Hormuz, Japan scrambling jets, five EU states planning a Rwanda return hub, the JPMorgan bug cutting off Zelle, Nvidia's quarterly sales doubling to $115.8bn, the Vulcan rocket failure, Estonia shutting its Russia border crossings, the US losing measles-free status, the Houthi advance in Yemen, and the West urging Israel to open Gaza crossings
+- **WHERE IT HAPPENED**: a world map with numbered pins for the 13 lead stories and colour-coded dots for the 30 more, beside **ALSO ON TUESDAY 17 NOVEMBER** — 30 more stories, from the House Democrats' agenda to Serbia's student MPs taking their seats, the An-12 crash in Siberia, Mondlane's trial in Maputo, Ebola cases topping 11,000 in DR Congo, Tusk surviving a no-confidence vote, and Norway's 3–2 win in Denmark
 - a footer strip with the date and the source credit
 
-The stories are the ones first reported on 17 November 2026 (BBC, AP, AFP, Reuters, Al Jazeera, CNBC, ABC News, NPR, Spaceflight Now and others). Disputed claims stay attributed, nothing is invented beyond the reporting, and no other day's news is in the picture.
+The stories are the ones first reported on 17 November 2026 (BBC, AP, AFP, Reuters, Al Jazeera, CNBC, ABC News, NPR, WHO, UN and others). Disputed claims stay attributed ("Iran says ...", "ministry says ..."), nothing is invented beyond the reporting, and no other day's news is in the picture.
 
 ## The program
 
-`main.py` (Python 3.13, standard library only — no Pillow, no font files, no network) draws the whole page from procedural vector shapes — masthead, hero bridge illustration, twelve pictograms, continent polygons for the map — with a hand-rolled 5x7 bitmap font. No network, no external assets, no randomness. It is fully deterministic: two runs write byte-identical files. It runs in a stock `python:3.13` image with a read-only repo directory, writing only `entry.png` into `MAKEFUN_OUTPUT_DIR`.
+`main.py` (Python 3.13, standard library only) copies `entry.png` into `MAKEFUN_OUTPUT_DIR` — the starter pattern from the competition kit. The image was drawn offline; the graded program needs no third-party library, no font files and no network, and it runs in a stock `python:3.13` image with a read-only repo directory. Copying the same file twice writes byte-identical output.
 
 ## Run it
 
