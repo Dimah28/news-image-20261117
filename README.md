@@ -8,29 +8,24 @@ Entry for the make.fun bounty **"Sum up 17 November's world news in one image"**
 
 ## The image
 
-`entry.png` — a 1024×1024 newspaper front page drawn entirely procedurally, in the style of a clean editorial infographic:
+`entry.png` — a 1024×1024 newspaper front page drawn entirely procedurally with Pillow, in the style of a clean editorial infographic. 37 real stories from Tuesday 17 November 2026:
 
-- masthead: **THE WORLD — TUESDAY, 17 NOVEMBER 2026**
-- a full-width **hero panel**: Ukraine strikes the Crimea (Kerch) Bridge a second day running — Kyiv hails an "unprecedented operation" as traffic halts
-- six illustrated panels in a **3×2 grid**, each one story of the day with a dateline kicker, a short bold headline and a source tag:
-  1. **Tankers hit by mines off Hormuz** — two oil tankers struck mines and caught fire near the Strait of Hormuz
-  2. **Xi, Trump and Putin to meet Thursday** — first three-way meeting confirmed, in Shenzhen on the APEC sidelines
-  3. **Iran drones target US radar base** — drones fired at the Sheikh Isa base in Bahrain, intercepted
-  4. **Jets scrambled as Russian planes enter airspace** — Japan launches fighters and protests
-  5. **Five nations plan Rwanda return hub** — Germany, Denmark, Austria, Greece and the Netherlands
-  6. **UK sanctions Israeli settlement builders** — eight construction companies plus an aid-blocking activist group
-- an **ALSO band** with three more stories: Depardieu pleads guilty in Paris; Houthis advance in Yemen as government forces pull back to Aden; US intelligence claim of an Iran "dirty bomb" plot
-- a footer strip with the date and the source credit (Al Jazeera, Reuters, BBC World)
+- masthead: **THE DAY IN WORLD NEWS — Tuesday 17 November 2026**, "37 stories · 6 continents · one day"
+- hero: **Kerch Bridge span falls into the strait** — Ukraine calls it an "unprecedented operation"; the Kremlin vows to rebuild
+- **12 illustrated panels** (4×3 grid), one story each with a dateline kicker, bold serif headline and a drawn pictogram: tankers ablaze in the Strait of Hormuz, Trump in Manila then Xi and Putin, Iran's drones at the US radar base in Bahrain, Japan scrambling jets, five EU states planning a Rwanda return hub, the JPMorgan bug cutting off Zelle, Nvidia's earnings after the bell, the Vulcan rocket failure, Estonia shutting its Russia border crossings, the US losing measles-free status, the Houthi advance in Yemen, and the West urging Israel to open Gaza crossings
+- **WHERE IT HAPPENED**: a world map with numbered pins for the 13 lead stories, beside **ALSO ON TUESDAY 17 NOVEMBER** — 24 more stories, from the House Democrats' agenda to the Broncos-Raiders line
+- a footer strip with the date and the source credit
 
-The stories are the ones first reported on 17 November 2026 (Al Jazeera, Reuters, Just Security's Early Edition). Claims are labelled as claims, nothing is invented beyond the reporting, and no other day's news is in the picture.
+The stories are the ones first reported on 17 November 2026 (BBC, AP, AFP, Reuters, Al Jazeera, CNBC, ABC News, NPR, Spaceflight Now and others). Disputed claims stay attributed, nothing is invented beyond the reporting, and no other day's news is in the picture.
 
 ## The program
 
-`main.py` (Python 3.13, standard library only) draws the whole page with a small built-in 5×7 bitmap font and encodes the PNG by hand with zlib, so it runs with no network and no dependencies. It is fully deterministic: two runs write byte-identical files.
+`main.py` (Python 3.13, Pillow only) draws the whole page from procedural vector shapes — masthead, hero bridge illustration, twelve pictograms, continent polygons for the map — with real DejaVu serif/sans type. No network, no external assets, no randomness. It is fully deterministic: two runs write byte-identical files.
 
 ## Run it
 
 ```sh
+pip install pillow
 mkdir -p out && MAKEFUN_OUTPUT_DIR=out python3 main.py
 ```
 
